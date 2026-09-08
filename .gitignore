@@ -1,15 +1,31 @@
-.venv/
+# Python
 __pycache__/
-*.pyc
-.pytest_cache/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# IDE
 .vscode/
+.idea/
 
-data/raw/*
-!data/raw/sample_transactions.csv
+# Jupyter
+.ipynb_checkpoints/
 
-data/processed/*.csv
-data/processed/*.json
-data/*.db
-
-logs/
+# Environment variables
 .env
+
+# Generated database
+*.db
+*.sqlite
+*.sqlite3
+
+# Generated outputs
+data/processed/
+
+# OS
+.DS_Store
+Thumbs.db
