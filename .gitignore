@@ -3,8 +3,13 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .vscode/
-data/raw/*.csv
+
+data/raw/*
+!data/raw/sample_transactions.csv
+
 data/processed/*.csv
 data/processed/*.json
 data/*.db
+
 logs/
+.env
