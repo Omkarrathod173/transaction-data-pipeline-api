@@ -1,5 +1,4 @@
-pandas
-numpy
-Flask
-pytest
-requests
+pandas>=2.0.0
+flask>=3.0.0
+sqlalchemy>=2.0.0
+pytest>=8.0.0

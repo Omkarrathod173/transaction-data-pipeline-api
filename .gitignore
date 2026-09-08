@@ -1,31 +1,15 @@
-# Python
 __pycache__/
 *.py[cod]
-*.pyo
-
-# Virtual environment
+*$py.class
 .venv/
 venv/
-env/
-
-# IDE
-.vscode/
-.idea/
-
-# Jupyter
-.ipynb_checkpoints/
-
-# Environment variables
-.env
-
-# Generated database
+*.log
+pipeline_debug.log
 *.db
 *.sqlite
-*.sqlite3
-
-# Generated outputs
-data/processed/
-
-# OS
+*.csv
+*.xlsx
+.vscode/
+.idea/
 .DS_Store
-Thumbs.db
+.env
