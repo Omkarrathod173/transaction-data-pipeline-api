@@ -1,81 +1,191 @@
-# Transaction Data Automation & Reporting API
+# Transaction Data Pipeline & Reporting API
 
-A portfolio-ready Python project aligned with the skills practiced during a Python Developer Internship: file-based ETL, Pandas transformations, SQLite database connectivity, Flask REST APIs, JSON, Postman, testing, and Git/GitHub.
+A production-style Python data pipeline that automates transaction data cleaning, validation, transformation, KPI generation, and reporting through a Flask REST API.
 
-## Internship context
+## Project Overview
 
-**Organization:** Elevate Labs  
-**Role:** Python Developer Intern  
-**Period:** 22 Sep 2025 – 08 Nov 2025  
-**Recognition:** Best Performer / Certificate of Completion
+This project simulates a real-world transaction reporting workflow where raw CSV data needs to be cleaned, validated, transformed, and converted into reporting-ready datasets.
 
-> This repository uses synthetic transaction data for portfolio demonstration. It does not contain or claim to contain confidential Elevate Labs data.
+The pipeline processes transaction data using Python and Pandas, stores the cleaned data in SQLite, generates business KPIs and regional summaries, and exposes the results through REST API endpoints.
 
-## Problem
-
-Recurring transaction exports often need manual cleanup before reporting. This project automates the workflow: ingest a CSV, validate and clean records, generate KPIs, store reporting-ready data in SQLite, and expose the results through a Flask API.
-
-## Architecture
+## Workflow
 
 ```text
-CSV source
-   ↓
-Extract + schema validation
-   ↓
-Pandas cleaning / transformation
-   ↓
-Data-quality report + logging
-   ↓
-SQLite reporting database
-   ↓
-KPI + regional reports
-   ↓
+Raw Transaction CSV
+        ↓
+Schema Validation
+        ↓
+Data Cleaning & Transformation
+        ↓
+Data Quality Checks
+        ↓
+SQLite Database
+        ↓
+KPI & Regional Reports
+        ↓
 Flask REST API
-   ↓
-JSON responses / Postman
+        ↓
+JSON Responses
 ```
 
-## Technologies
+## Key Features
 
-Python, Pandas, NumPy, SQLite, Flask, JSON, pytest, Postman, Git, GitHub, VS Code/Jupyter.
+* Automated CSV-based transaction ETL pipeline
+* Schema validation and data-quality checks
+* Duplicate and invalid-record handling
+* Pandas-based data cleaning and transformation
+* KPI generation for transaction reporting
+* Regional performance summaries
+* SQLite database for structured storage
+* Flask REST API for accessing processed data
+* JSON-based API responses
+* Logging and error handling
+* Automated tests using Pytest
 
-## Run it
+## Tech Stack
 
-Use Python 3.12+.
+| Category        | Technologies         |
+| --------------- | -------------------- |
+| Language        | Python               |
+| Data Processing | Pandas, NumPy        |
+| Database        | SQLite               |
+| API             | Flask, REST API      |
+| Testing         | Pytest               |
+| Data Format     | CSV, JSON            |
+| Tools           | Git, GitHub, VS Code |
 
-```powershell
+## Project Structure
+
+```text
+transaction-data-pipeline-api/
+│
+├── app/
+│   └── app.py
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+├── src/
+│   └── run_pipeline.py
+│
+├── tests/
+│
+├── .gitignore
+├── README.md
+├── requirements.txt
+└── ...
+```
+
+## API Endpoints
+
+| Endpoint                            | Purpose                              |
+| ----------------------------------- | ------------------------------------ |
+| `GET /health`                       | Check API status                     |
+| `GET /api/v1/kpis`                  | Retrieve transaction KPIs            |
+| `GET /api/v1/transactions?limit=10` | Retrieve processed transactions      |
+| `GET /api/v1/reports/region`        | Retrieve regional performance report |
+
+## Example API Response
+
+```json
+{
+  "status": "success",
+  "total_transactions": 1000,
+  "total_revenue": 1250000
+}
+```
+
+## How to Run
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Omkarrathod173/transaction-data-pipeline-api.git
+
+cd transaction-data-pipeline-api
+```
+
+### 2. Create a virtual environment
+
+```bash
 python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-python src\run_pipeline.py
-python -m pytest -q
-python app\app.py
 ```
 
-API endpoints:
+### 3. Activate the environment
 
-- `GET /health`
-- `GET /api/v1/kpis`
-- `GET /api/v1/transactions?limit=10`
-- `GET /api/v1/reports/region`
+Windows:
 
-## Outputs
+```bash
+.venv\Scripts\activate
+```
 
-Running the pipeline creates:
+### 4. Install dependencies
 
-- `data/raw/daily_transactions.csv`
-- `data/processed/clean_transactions.csv`
-- `data/processed/data_quality_report.json`
-- `data/processed/kpi_summary.json`
-- `data/processed/regional_summary.csv`
-- `data/transaction_reporting.db`
+```bash
+pip install -r requirements.txt
+```
 
-## Resume-ready wording
+### 5. Run the ETL pipeline
 
-Use only claims you can reproduce and explain:
+```bash
+python src/run_pipeline.py
+```
 
-- Automated a Python/Pandas transaction ETL workflow with schema validation, deduplication and KPI generation, persisting reporting-ready data in SQLite.
-- Built reusable Python modules and a Flask REST API to expose transaction KPIs and regional reports as JSON for internal reporting workflows.
-- Added data-quality checks, logging and automated tests to catch source-data issues and improve pipeline reliability.
+### 6. Run tests
 
-Do not claim that the synthetic project reduced a real company’s processing time unless you measured that during the internship.
+```bash
+python -m pytest -q
+```
+
+### 7. Start the API
+
+```bash
+python app/app.py
+```
+
+The API can then be tested using a browser, Postman, or another API client.
+
+## Data Pipeline Outputs
+
+The pipeline generates:
+
+* Clean transaction dataset
+* Data-quality report
+* KPI summary
+* Regional performance report
+* SQLite reporting database
+
+## Business Value
+
+The project demonstrates how raw operational transaction data can be converted into structured, reporting-ready information through an automated ETL workflow.
+
+It combines data engineering and analytics concepts including:
+
+* Data cleaning
+* Data validation
+* ETL automation
+* KPI reporting
+* Database storage
+* REST API development
+* Automated testing
+
+## Project Highlights
+
+* Built a reusable Python/Pandas ETL pipeline for transaction data processing.
+* Implemented data validation, cleaning, deduplication and KPI generation.
+* Stored reporting-ready data in SQLite for structured analysis.
+* Developed Flask REST API endpoints to expose KPIs and regional reports.
+* Added data-quality checks, logging and automated tests for pipeline reliability.
+
+## Disclaimer
+
+This project uses synthetic transaction data created for portfolio and demonstration purposes. It does not contain confidential company data.
+
+## Author
+
+**Omkar Banoth**
+
+B.Tech, IIT Madras
+
+Aspiring Data Analyst | Python | SQL | Excel | Data Analytics
